@@ -40,3 +40,6 @@ name / etc
 --if delete
 
 if number is absense - errormsg
+
+obtional
+パラメータの数が少ないので、能力値ごとにツリーを作るかが悩みです。

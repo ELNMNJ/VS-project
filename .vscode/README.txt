@@ -1,7 +1,7 @@
 sql
 
 select
-select para1 operator integer (and para2 operator integer) view viewPara1, ..., viewParaN;
+select para1 operator integer (and para2 operator integer) view viewPara1, ..., viewParaN order orderPara asc/desc;
 
 operator : 
 bt - better than
@@ -9,6 +9,8 @@ bte - better than or equal
 eq - equal
 lt - less than
 lte - less than or equal
+
+
 
 insert
 insert number nameVal hpVal atkVal defVal spaVal spdVal spdVal;
