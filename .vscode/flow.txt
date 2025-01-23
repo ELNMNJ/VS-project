@@ -1,0 +1,45 @@
+flow
+
+README file - search sql
+search - someKey ex)number, atk, def
+option - max 2 + search in result?
+bt/ebt/eq/lt/elt
+
+parse sql
+select para1 bt 50 and para2 lte 70 view para1, para2, ..., paraN;
+insert number name hp atk def spa spd spd;
+update number para1 : %d, ... , paraN : %d;
+delete number;
+
+-flow
+
+choose select / insert / update / delete
+
+--if search
+
+input sql - parser
+after parssing, display list
+
+//using indexing? or not?
+
+question 1.search in result 2.new search 3.quit search
+
+if 2 or 3, drop search result
+
+--if insert
+
+number / name / etc
+
+if number is absense - errormsg
+
+--if update
+
+input number
+name / etc
+
+--if delete
+
+if number is absense - errormsg
+
+obtional
+パラメータの数が少ないので、能力値ごとにツリーを作るかが悩みです。
