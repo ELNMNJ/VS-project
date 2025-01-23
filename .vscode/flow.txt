@@ -5,17 +5,15 @@ search - someKey ex)number, atk, def
 option - max 2 + search in result?
 bt/bte/eq/lt/lte
 
--flow
-
-choose select / insert / update / delete
-
-or
-
 parse sql
 select para1 bt 50 and para2 lte 70 view para1, para2, ..., paraN;
 insert number name hp atk def spa spd spd;
 update number para1 : %d, ... , paraN : %d;
 delete number;
+
+-flow
+
+choose select / insert / update / delete
 
 --if search
 
