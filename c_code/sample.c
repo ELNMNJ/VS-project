@@ -1,6 +1,6 @@
 #include "stdio.h"
 #include "string.h"
-//commit test
+
 struct Pokemon {
     int number;
     char name[20];
@@ -12,11 +12,16 @@ struct Pokemon {
     int speed;
 };
 
+struct IndexNode{
+    int key;
+    struct Node *childNode;
+};
+
 struct Node{
     int key;
     struct Pokemon pokemon;
-    struct Node *leftchild;
-    struct Node *rightchild;
+    struct Node *leftNode;
+    struct Node *rightNode;
 };
 
 struct BPTree{

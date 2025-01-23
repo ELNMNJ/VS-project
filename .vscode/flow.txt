@@ -1,0 +1,36 @@
+flow
+
+README file - search sql
+search - someKey ex)number, atk, def
+option - max 2 + search in result?
+bt/bte/eq/lt/lte
+
+-flow
+
+choose search / insert / update / delete
+
+--if search
+
+input sql - parser
+after parssing, display list
+
+//using indexing? or not?
+
+question 1.search in result 2.new search 3.quit search
+
+if 2 or 3, drop search result
+
+--if insert
+
+number / name / etc
+
+if number is absense - errormsg
+
+--if update
+
+input number
+name / etc
+
+--if delete
+
+if number is absense - errormsg
