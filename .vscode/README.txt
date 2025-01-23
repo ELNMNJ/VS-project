@@ -5,10 +5,10 @@ select para1 operator integer (and para2 operator integer) view viewPara1, ..., 
 
 operator : 
 bt - better than
-bte - better than or equal
+ebt - equal to or better than
 eq - equal
 lt - less than
-lte - less than or equal
+elt - equal to or better than
 
 
 
