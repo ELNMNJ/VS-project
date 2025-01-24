@@ -1,50 +1,34 @@
 #include "stdio.h"
 #include "string.h"
 
-struct Pokemon {
-    int number;
-    char name[20];
-    int hp;
-    int atk;
-    int def;
-    int spa;
-    int spd;
-    int speed;
-};
+typedef struct Pokemon {
+    unsigned short number;
+    char name[18];
+    unsigned short hp;
+    unsigned short atk;
+    unsigned short def;
+    unsigned short spa;
+    unsigned short spd;
+    unsigned short speed;
+}Pokemon;
 
-struct IndexNode{
-    int key;
-    struct Node *childNode;
-};
-
-struct Node{
-    int key;
-    struct Pokemon pokemon;
-    struct Node *leftNode;
-    struct Node *rightNode;
-};
-
-struct BPTree{
-    struct Node *root;
-    int degree;
-};
-
-void init(struct Pokemon *monsterballPtr);
-void insertInfo(struct Pokemon *pokemonPtr, int number, char *name, int hp, int atk, int def, int spa, int spd, int speed);
+void init(Pokemon *monsterballPtr);
+void insertInfo(Pokemon *pokemonPtr, unsigned short number, char *name, unsigned short hp, unsigned short atk, unsigned short def, unsigned short spa, unsigned short spd, unsigned short speed);
 
 int main() {
     struct Pokemon monsterball[6];
     init(monsterball);
 
     for(int i = 0; i < 6; i++){
-        printf("Number: %d\n", monsterball[i].number);
-        printf("Name: %s\n", monsterball[i].name);
-        printf("HP: %d\n", monsterball[i].hp);
-        printf("Attack: %d\n", monsterball[i].atk);
-        printf("Defense: %d\n", monsterball[i].def);
-        printf("Special Attack: %d\n", monsterball[i].spa);
-        printf("Special Defense: %d\n", monsterball[i].spd);
-        printf("Speed: %d\n", monsterball[i].speed);
+        Pokemon *temp = &monsterball[i];
+        printf("%d\t\t", temp->number);
+        printf("%-18s", temp->name);
+        printf("%d\t", temp->hp);
+        printf("%d\t", temp->atk);
+        printf("%d\t", temp->def);
+        printf("%d\t", temp->spa);
+        printf("%d\t", temp->spd);
+        printf("%d\n", temp->speed);
         printf("\n");
     }
 
@@ -60,7 +44,7 @@ void init(struct Pokemon *monsterballPtr){
     insertInfo(monsterballPtr, 143, "Snorlax", 160, 110, 65, 65, 65, 30);
 }
 
-void insertInfo(struct Pokemon *pokemonPtr, int number, char *name, int hp, int atk, int spa, int spd, int def, int speed){
+void insertInfo(Pokemon *pokemonPtr, unsigned short number, char *name, unsigned short hp, unsigned short atk, unsigned short def, unsigned short spa, unsigned short spd, unsigned short speed){
     pokemonPtr->number = number;
     strcpy(pokemonPtr->name, name);
     pokemonPtr->hp = hp;
