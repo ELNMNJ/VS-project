@@ -1,13 +1,37 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "bPlusTree.h"
 #include "parser.h"
 
 // 테스트
 int main() {
-    
-    BPlusTree *tree = createBPlusTree(4);
+    /*
+    BPlusTree *tree = createBPlusTree(5);
 
+    FILE *file = fopen("pokemonList.txt", "r");
+    if (file == NULL) {
+        perror("파일 열기 실패");
+        return 1;
+    }
+
+    char line[256];
+    while (fgets(line, sizeof(line), file) != NULL) {
+        // 배열 크기 재조정
+        Pokemon *pokemon = malloc(sizeof(Pokemon));
+        // 각 라인의 데이터를 구조체에 매핑
+        if (sscanf(line, "%hu %21s %hu %hu %hu %hu %hu %hu", 
+            &pokemon->number, pokemon->name, &pokemon->atk, &pokemon->hp, &pokemon->def, &pokemon->spa, &pokemon->spd, &pokemon->speed) == 8) {
+            insertBPlusTree(tree, pokemon, pokemon->hp);
+        } else {
+            // 형식이 맞지 않는 경우 처리. 여기서는 무시함.
+            printf("잘못된 형식의 줄: %s\n", line);
+        }
+    }
+
+    fclose(file);
+    */
+    /*
     Pokemon p1 = {1, "Bulbasaur", 49, 45, 49, 65, 65, 45};
     Pokemon p2 = {4, "Charmander", 52, 39, 43, 60, 50, 65};
     Pokemon p3 = {7, "Squirtle", 48, 44, 65, 50, 64, 43};
@@ -39,15 +63,16 @@ int main() {
     insertBPlusTree(tree, &p13, p13.hp);
     insertBPlusTree(tree, &p14, p14.hp);
     insertBPlusTree(tree, &p15, p15.hp);
+    */
+    //printAllLeafNodes(tree);
 
-    printAllLeafNodes(tree);
-
+    /*
     removeFromBPlusTree(tree, 25);
     removeFromBPlusTree(tree, 6);
     removeFromBPlusTree(tree, 150);
-
+    */
     //메모리 회수
-
+    
     testSQLParser();
 
     char c1 = getchar();

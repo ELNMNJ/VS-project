@@ -196,6 +196,7 @@ void printBPlusTree(BPlusTree *tree) {
 }
 
 void printAllLeafNodes(BPlusTree *tree) {
+    int count =  1;
     if (tree == NULL || tree->first_leaf == NULL) {
         printf("Tree is empty or has no leaf nodes.\n");
         return;
@@ -206,6 +207,7 @@ void printAllLeafNodes(BPlusTree *tree) {
 
     // 첫 번째 리프 노드부터 시작하여 마지막 노드까지 순회
     while (current != NULL) {
+        /*
         printf("Leaf Node (keys: ");
         for (int i = 0; i < current->num_keys; i++) {
             printf("%hu", current->keys[i]);
@@ -213,17 +215,19 @@ void printAllLeafNodes(BPlusTree *tree) {
                 printf(", ");
             }
         }
-        printf(") [");
-
+        */
+        //printf(") [");
+        
         // 포켓몬 정보 출력
         for (int i = 0; i < current->num_keys; i++) {
             Pokemon *pokemon = current->ptr.records[i];
-            printf("(%hu, %s)", pokemon->number, pokemon->name);
+            printf("number : %hu, name : %s, %d\n", pokemon->number, pokemon->name, count);
+            count++;
             if (i < current->num_keys - 1) {
-                printf(", ");
+                //printf(", ");
             }
         }
-        printf("]\n");
+        //printf("]\n");
 
         // 다음 리프 노드로 이동
         current = current->next;
