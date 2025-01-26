@@ -7,7 +7,7 @@
             "command": "gcc",
             "args": [
                 "c_code/main.c",
-                "c_code/bPlusTree.c",
+                "c_code/linkedList.c",
                 "c_code/parser.c",
                 "-o",
                 "main.exe"
@@ -28,7 +28,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "c_code/main.c",
-                "c_code/bPlusTree.c", 
+                "c_code/linkedList.c", 
                 "c_code/parser.c",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"

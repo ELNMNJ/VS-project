@@ -1,5 +1,6 @@
 #ifndef PARSER_H
 #define PARSER_H
+#include "linkedList.h"
 
 #define MAX_INPUT_SIZE 256
 
@@ -29,6 +30,7 @@ typedef struct {
 //함수 선언부
 Operator stringToOperator(const char *str);
 SQLParsed parseSQL(const char *sql);
+void runSQL(char *sql, LinkedList *list);
 void testSQLParser();
 
 #endif
