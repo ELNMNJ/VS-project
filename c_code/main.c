@@ -32,10 +32,6 @@ int main() {
 
     fclose(file);
 
-    //printList(&list);
-    
-    //testSQLParser();
-
     char sql[80];
 
     while (1) {

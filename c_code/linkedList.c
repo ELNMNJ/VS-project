@@ -28,9 +28,6 @@ void insertSorted(LinkedList *list, Pokemon pokemon) {
             current = current->next;
         }
         newNode->next = current->next;
-        if (current->next == NULL) { // 마지막 노드일 경우
-            list->tail = newNode;
-        }
         current->next = newNode;
     }
 }
@@ -117,6 +114,7 @@ int main() {
 
     printList(&list);
 
-    return 0;
+    // 리스트의 헤드와 테일을 NULL로 설정하여 리스트가 비어있음을 나타냅니다.
+    list->head = NULL;
+    list->tail = NULL;
 }
-*/
