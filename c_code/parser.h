@@ -14,6 +14,10 @@ typedef enum {
     SQL_SELECT, SQL_INSERT, SQL_UPDATE, SQL_DELETE, SQL_UNKNOWN
 } SQLType;
 
+typedef enum{
+    POKEMON_NAME, POKEMON_HP, POKEMON_ATK, POKEMON_DEF, POKEMON_SPA, POKEMON_SPD, POKEMON_SPEED
+} PokemonStat;
+
 typedef struct {
     SQLType type;
     unsigned short number; // 포켓몬 번호

@@ -79,10 +79,19 @@ void runSQL(char *sql, LinkedList *list) {
         case SQL_SELECT:
             printf("SELECT: para1=%s, op1=%d, val1=%d, para2=%s, op2=%d, val2=%d\n",
                    parsed.para1, parsed.op1, parsed.val1, parsed.para2, parsed.op2, parsed.val2);
+            //operator가 unknown이면 에러 메시지 출력
             if(parsed.op1 == OP_UNKNOWN || parsed.op2 == OP_UNKNOWN){
                 printf("Unknown operator\n");
                 return;
             }
+            //parameter가 unknown이면 에러 메시지 출력
+            if(strcmp(parsed.para1, "hp") == 1 || strcmp(parsed.para1, "atk") == 1 || strcmp(parsed.para1, "def") == 1 || strcmp(parsed.para1, "spa") == 1 || strcmp(parsed.para1, "spd") == 1 || strcmp(parsed.para1, "speed") == 1){
+                printf("Unknown parameter\n");
+            }
+            if(strcmp(parsed.para2, "hp") == 1 || strcmp(parsed.para2, "atk") == 1 || strcmp(parsed.para2, "def") == 1 || strcmp(parsed.para2, "spa") == 1 || strcmp(parsed.para2, "spd") == 1 || strcmp(parsed.para2, "speed") == 1){
+                printf("Unknown parameter\n");
+            }
+
             break;
         case SQL_INSERT:
             printf("INSERT: number=%d, name=%s, val1=%d, val2=%d\n", 

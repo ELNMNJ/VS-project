@@ -3,7 +3,7 @@
 
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
-        "c": "cd \"c:\\Users\\yjs45\\Desktop\\myfolder\\programming\\VS project\\VS-project\\c_code\\\" && gcc main.c linkedList.c parser.c -o main.exe && .\\main.exe",
+        "c": "cd $dir && gcc main.c linkedList.c parser.c -o main.exe && .\\main.exe",
         "zig": "zig run",
         "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
