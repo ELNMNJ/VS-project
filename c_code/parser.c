@@ -88,7 +88,7 @@ void runSQL(char *sql, LinkedList *list) {
             if(strcmp(parsed.para1, "hp") == 1 || strcmp(parsed.para1, "atk") == 1 || strcmp(parsed.para1, "def") == 1 || strcmp(parsed.para1, "spa") == 1 || strcmp(parsed.para1, "spd") == 1 || strcmp(parsed.para1, "speed") == 1){
                 printf("Unknown parameter\n");
             }
-            if(strcmp(parsed.para2, "hp") == 1 || strcmp(parsed.para2, "atk") == 1 || strcmp(parsed.para2, "def") == 1 || strcmp(parsed.para2, "spa") == 1 || strcmp(parsed.para2, "spd") == 1 || strcmp(parsed.para2, "speed") == 1){
+            if(strcmp(parsed.para2, "hp") == 1 || strcmp(parsed.para2, "atk") == 1 || strcmp(parsed.para2, "def") == 1 || strcmp(parsed.para2, "spa") == 1 || strcmp(parsed.para2, "spd") == 1 || strcmp(parsed.para2, "speed") == 1 || strcmp(parsed.para2, "none") == 1){
                 printf("Unknown parameter\n");
             }
 
