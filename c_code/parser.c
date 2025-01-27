@@ -84,13 +84,20 @@ void runSQL(char *sql, LinkedList *list) {
                 printf("Unknown operator\n");
                 return;
             }
+
             //parameter가 unknown이면 에러 메시지 출력
-            if(strcmp(parsed.para1, "hp") == 1 || strcmp(parsed.para1, "atk") == 1 || strcmp(parsed.para1, "def") == 1 || strcmp(parsed.para1, "spa") == 1 || strcmp(parsed.para1, "spd") == 1 || strcmp(parsed.para1, "speed") == 1){
-                printf("Unknown parameter\n");
+            if(!(strcmp(parsed.para1, "hp") == 0 || strcmp(parsed.para1, "atk") == 0 || strcmp(parsed.para1, "def") == 0 || strcmp(parsed.para1, "spa") == 0 || strcmp(parsed.para1, "spd") == 0 || strcmp(parsed.para1, "speed") == 0)){
+                printf("Unknown parameter : para1\n");
+                break;
             }
-            if(strcmp(parsed.para2, "hp") == 1 || strcmp(parsed.para2, "atk") == 1 || strcmp(parsed.para2, "def") == 1 || strcmp(parsed.para2, "spa") == 1 || strcmp(parsed.para2, "spd") == 1 || strcmp(parsed.para2, "speed") == 1 || strcmp(parsed.para2, "none") == 1){
-                printf("Unknown parameter\n");
+            if(!(strcmp(parsed.para2, "hp") == 0 || strcmp(parsed.para2, "atk") == 0 || strcmp(parsed.para2, "def") == 0 || strcmp(parsed.para2, "spa") == 0 || strcmp(parsed.para2, "spd") == 0 || strcmp(parsed.para2, "speed") == 0 || strcmp(parsed.para2, "none") == 0)){
+                printf("Unknown parameter : para2\n");
+                break;
             }
+
+            //case para1 only
+            
+            //case para1 and para2
 
             break;
         case SQL_INSERT:
