@@ -51,11 +51,18 @@ SQLParsed parseSQL(const char *sql) {
         token = strtok(NULL, " ");
         strncpy(result.name, token, sizeof(result.name) - 1);
         token = strtok(NULL, " ");
-        // 여기서 다른 능력치 값들을 파싱합니다. 간단히 예시로 두 가지 능력치만 파싱.
+        // 여기서 다른 능력치 값들을 파싱합니다.
         result.val1 = atoi(token);
         token = strtok(NULL, " ");
         result.val2 = atoi(token);
-        // 나머지 능력치는 필요에 따라 추가 파싱 가능
+        token = strtok(NULL, " ");
+        result.val3 = atoi(token);
+        token = strtok(NULL, " ");
+        result.val4 = atoi(token);
+        token = strtok(NULL, " ");
+        result.val5 = atoi(token);
+        token = strtok(NULL, " ");
+        result.val6 = atoi(token);
     } else if (strcmp(token, "update") == 0) {
         result.type = SQL_UPDATE;
         token = strtok(NULL, " ");
@@ -84,32 +91,48 @@ void runSQL(char *sql, LinkedList *list) {
                 printf("Unknown operator\n");
                 return;
             }
-
+            
             //parameter가 unknown이면 에러 메시지 출력
-            if(!(strcmp(parsed.para1, "hp") == 0 || strcmp(parsed.para1, "atk") == 0 || strcmp(parsed.para1, "def") == 0 || strcmp(parsed.para1, "spa") == 0 || strcmp(parsed.para1, "spd") == 0 || strcmp(parsed.para1, "speed") == 0)){
+            if(!(strcmp(parsed.para1, "number") == 0 || strcmp(parsed.para1, "hp") == 0 || strcmp(parsed.para1, "atk") == 0 || strcmp(parsed.para1, "def") == 0 || strcmp(parsed.para1, "spa") == 0 || strcmp(parsed.para1, "spd") == 0 || strcmp(parsed.para1, "speed") == 0)){
                 printf("Unknown parameter : para1\n");
                 break;
             }
-            if(!(strcmp(parsed.para2, "hp") == 0 || strcmp(parsed.para2, "atk") == 0 || strcmp(parsed.para2, "def") == 0 || strcmp(parsed.para2, "spa") == 0 || strcmp(parsed.para2, "spd") == 0 || strcmp(parsed.para2, "speed") == 0 || strcmp(parsed.para2, "none") == 0)){
+            if(!(strcmp(parsed.para2, "number") == 0 || strcmp(parsed.para2, "hp") == 0 || strcmp(parsed.para2, "atk") == 0 || strcmp(parsed.para2, "def") == 0 || strcmp(parsed.para2, "spa") == 0 || strcmp(parsed.para2, "spd") == 0 || strcmp(parsed.para2, "speed") == 0 || strcmp(parsed.para2, "none") == 0)){
                 printf("Unknown parameter : para2\n");
                 break;
             }
 
             //case para1 only
-            
-            //case para1 and para2
+            if(strcmp(parsed.para2, "none") == 0){
+                printListByOperator(list, parsed.para1, parsed.val1, parsed.op1);
+            }else{//case para1 and para2
+                printListByTwoOperator(list, parsed.para1, parsed.val1, parsed.op1, parsed.para2, parsed.val2, parsed.op2);
+            }
 
             break;
         case SQL_INSERT:
             printf("INSERT: number=%d, name=%s, val1=%d, val2=%d\n", 
                    parsed.number, parsed.name, parsed.val1, parsed.val2);
+            Pokemon pokemon;
+            pokemon.number = parsed.number;
+            strncpy(pokemon.name, parsed.name, sizeof(pokemon.name) - 1);
+            pokemon.name[sizeof(pokemon.name) - 1] = '\0';
+            pokemon.hp = parsed.val1;
+            pokemon.atk = parsed.val2;
+            pokemon.def = parsed.val3;
+            pokemon.spa = parsed.val4;
+            pokemon.spd = parsed.val5;
+            pokemon.speed = parsed.val6;
+            insertSorted(list, pokemon);
             break;
         case SQL_UPDATE:
             printf("UPDATE: number=%d, para1=%s, update_val=%d\n", 
                    parsed.number, parsed.para1, parsed.update_val);
+            updateNode(list, parsed.number, parsed.para1, parsed.update_val);
             break;
         case SQL_DELETE:
             printf("DELETE: number=%d\n", parsed.number);
+            deleteNode(list, parsed.number);
             break;
         case SQL_UNKNOWN:
             printf("Unknown SQL command\n");

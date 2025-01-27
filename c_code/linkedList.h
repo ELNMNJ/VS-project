@@ -22,10 +22,14 @@ typedef struct LinkedList {
     Node *tail;
 } LinkedList;
 
+void printPokemon(Node* current);
 void initList(LinkedList *list);
 void insertSorted(LinkedList *list, Pokemon pokemon);
 void printList(LinkedList *list);
-void updateNode(LinkedList *list, unsigned short number, Pokemon newData);
+void updateNode(LinkedList *list, unsigned short number, char *parameter, unsigned short value);
 void deleteNode(LinkedList *list, unsigned short number);
+void printListByOperator(LinkedList *list, char *parameter, unsigned short value, int operator);
+void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short value1, int operator1, char *parameter2, unsigned short value2, int operator2);
+void freeLinkedList(LinkedList *list);
 
 #endif

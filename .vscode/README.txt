@@ -19,6 +19,6 @@ update number para1 : %d, ... , paraN : %d;
 delete
 delete number;
 
-//exe 파일 인코딩
+//execute file encoding JP
 $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = [System.Text.Encoding]::UTF8
 .\main.exe

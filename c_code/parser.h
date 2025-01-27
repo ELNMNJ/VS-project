@@ -14,20 +14,20 @@ typedef enum {
     SQL_SELECT, SQL_INSERT, SQL_UPDATE, SQL_DELETE, SQL_UNKNOWN
 } SQLType;
 
-typedef enum{
-    POKEMON_NAME, POKEMON_HP, POKEMON_ATK, POKEMON_DEF, POKEMON_SPA, POKEMON_SPD, POKEMON_SPEED
-} PokemonStat;
-
 typedef struct {
     SQLType type;
     unsigned short number; // 포켓몬 번호
     char name[22];
-    char para1[5]; // 최대 4자리 문자열로 가정
-    char para2[5];
+    char para1[7]; // 최대 6리 문자열로 가정
+    char para2[7]; // 최대 6자리 문자열로 가정
     Operator op1;
     Operator op2;
     int val1;
     int val2;
+    int val3;
+    int val4;
+    int val5;
+    int val6;
     int update_val;
 } SQLParsed;
 
