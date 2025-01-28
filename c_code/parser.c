@@ -84,21 +84,21 @@ void runSQL(char *sql, LinkedList *list) {
     SQLParsed parsed = parseSQL(sql);
     switch (parsed.type) {
         case SQL_SELECT:
-            printf("SELECT: para1=%s, op1=%d, val1=%d, para2=%s, op2=%d, val2=%d\n",
-                   parsed.para1, parsed.op1, parsed.val1, parsed.para2, parsed.op2, parsed.val2);
+            //printf("SELECT: para1=%s, op1=%d, val1=%d, para2=%s, op2=%d, val2=%d\n",
+            //       parsed.para1, parsed.op1, parsed.val1, parsed.para2, parsed.op2, parsed.val2);
             //operator가 unknown이면 에러 메시지 출력
             if(parsed.op1 == OP_UNKNOWN || parsed.op2 == OP_UNKNOWN){
-                printf("Unknown operator\n");
+                printf("間違った演算子\n");
                 return;
             }
             
             //parameter가 unknown이면 에러 메시지 출력
             if(!(strcmp(parsed.para1, "number") == 0 || strcmp(parsed.para1, "hp") == 0 || strcmp(parsed.para1, "atk") == 0 || strcmp(parsed.para1, "def") == 0 || strcmp(parsed.para1, "spa") == 0 || strcmp(parsed.para1, "spd") == 0 || strcmp(parsed.para1, "speed") == 0)){
-                printf("Unknown parameter : para1\n");
+                printf("間違ったパラメータ : パラメータ１\n");
                 break;
             }
             if(!(strcmp(parsed.para2, "number") == 0 || strcmp(parsed.para2, "hp") == 0 || strcmp(parsed.para2, "atk") == 0 || strcmp(parsed.para2, "def") == 0 || strcmp(parsed.para2, "spa") == 0 || strcmp(parsed.para2, "spd") == 0 || strcmp(parsed.para2, "speed") == 0 || strcmp(parsed.para2, "none") == 0)){
-                printf("Unknown parameter : para2\n");
+                printf("間違ったパラメータ : パラメータ２\n");
                 break;
             }
 
@@ -111,8 +111,8 @@ void runSQL(char *sql, LinkedList *list) {
 
             break;
         case SQL_INSERT:
-            printf("INSERT: number=%d, name=%s, val1=%d, val2=%d\n", 
-                   parsed.number, parsed.name, parsed.val1, parsed.val2);
+            //printf("INSERT: number=%d, name=%s, val1=%d, val2=%d\n", 
+            //       parsed.number, parsed.name, parsed.val1, parsed.val2);
             Pokemon pokemon;
             pokemon.number = parsed.number;
             strncpy(pokemon.name, parsed.name, sizeof(pokemon.name) - 1);
@@ -123,19 +123,19 @@ void runSQL(char *sql, LinkedList *list) {
             pokemon.spa = parsed.val4;
             pokemon.spd = parsed.val5;
             pokemon.speed = parsed.val6;
-            insertSorted(list, pokemon);
+            insertSorted(list, pokemon, 1);
             break;
         case SQL_UPDATE:
-            printf("UPDATE: number=%d, para1=%s, update_val=%d\n", 
-                   parsed.number, parsed.para1, parsed.update_val);
+            //printf("UPDATE: number=%d, para1=%s, update_val=%d\n", 
+            //       parsed.number, parsed.para1, parsed.update_val);
             updateNode(list, parsed.number, parsed.para1, parsed.update_val);
             break;
         case SQL_DELETE:
-            printf("DELETE: number=%d\n", parsed.number);
+            //printf("DELETE: number=%d\n", parsed.number);
             deleteNode(list, parsed.number);
             break;
         case SQL_UNKNOWN:
-            printf("Unknown SQL command\n");
+            printf("間違ったSQL文\n");
             break;
     }
 

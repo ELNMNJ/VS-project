@@ -10,7 +10,7 @@ void initList(LinkedList *list) {
 }
 
 // 정렬된 상태로 노드 추가
-void insertSorted(LinkedList *list, Pokemon pokemon) {
+void insertSorted(LinkedList *list, Pokemon pokemon, int outputPlag) {
     Node *newNode = (Node*)malloc(sizeof(Node));
     newNode->data = pokemon;
     newNode->next = NULL;
@@ -20,11 +20,15 @@ void insertSorted(LinkedList *list, Pokemon pokemon) {
         newNode->next = list->head;
         list->head = newNode;
         if (newNode->next == NULL) list->tail = newNode; // 리스트에 노드가 하나뿐이었을 때
+
+        if (outputPlag){
+            printf("ポケモンがリストに追加されました。\n");
+        }
     } else {
         Node *current = list->head;
         while (current->next != NULL && current->next->data.number <= pokemon.number) {
             if (current->next->data.number == pokemon.number) {
-                printf("이미 존재하는 번호입니다.\n");
+                printf("既に存在する番号です。\n");
                 free(newNode); // 메모리 누수를 방지하기 위해 할당된 메모리 해제
                 return;
             }
@@ -34,6 +38,10 @@ void insertSorted(LinkedList *list, Pokemon pokemon) {
         newNode->next = current->next;
         current->next = newNode;
         if (newNode->next == NULL) list->tail = newNode; // 마지막 노드일 경우
+
+        if (outputPlag){
+            printf("ポケモンがリストに追加されました。\n");
+        }
     }
 }
 
@@ -41,7 +49,7 @@ void insertSorted(LinkedList *list, Pokemon pokemon) {
 void printList(LinkedList *list) {
     Node *current = list->head;
     if (current == NULL) {
-        printf("리스트가 비어있습니다.\n");
+        printf("リストが空っぽです。\n");
         return;
     }
     while (current != NULL) {
@@ -73,19 +81,19 @@ void updateNode(LinkedList *list, unsigned short number, char *parameter, unsign
                 printf("Unknown parameter : %s\n", parameter);
                 return;
             }
-            printf("노드가 업데이트 되었습니다.\n");
+            printf("ポケモンのリストがアップデートされました。\n");
             return;
         }
         current = current->next;
     }
-    printf("해당 번호의 포켓몬을 찾을 수 없습니다.\n");
+    printf("番号に該当するポケモンが存在しません。\n");
 }
 
 // 특정 operator에 따라 노드 출력
 void printListByOperator(LinkedList *list, char *parameter, unsigned short value, int operator) {
     Node *current = list->head;
     if (current == NULL) {
-        printf("리스트가 비어있습니다.\n");
+        printf("リストが空っぽです。\n");
         return;
     }
     while (current != NULL) {
@@ -162,7 +170,7 @@ void printListByOperator(LinkedList *list, char *parameter, unsigned short value
 void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short value1, int operator1, char *parameter2, unsigned short value2, int operator2) {
     Node *current = list->head;
     if (current == NULL) {
-        printf("리스트가 비어있습니다.\n");
+        printf("リストが空っぽです。\n");
         return;
     }
     while (current != NULL) {
@@ -467,7 +475,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
 // 특정 number의 노드 삭제
 void deleteNode(LinkedList *list, unsigned short number) {
     if (list->head == NULL) {
-        printf("리스트가 비어 있습니다.\n");
+        printf("リストが空っぽです。\n");
         return;
     }
 
@@ -488,13 +496,13 @@ void deleteNode(LinkedList *list, unsigned short number) {
                 }
             }
             free(current);  // 메모리 해제
-            printf("노드가 삭제되었습니다.\n");
+            printf("番号に該当するポケモンが削除されました。\n");
             return;
         }
         prev = current;
         current = current->next;
     }
-    printf("해당 번호의 포켓몬을 찾을 수 없습니다.\n");
+    printf("番号に該当するポケモンが存在しません。\n");
 }
 
 void freeLinkedList(LinkedList *list) {

@@ -24,7 +24,7 @@ typedef struct LinkedList {
 
 void printPokemon(Node* current);
 void initList(LinkedList *list);
-void insertSorted(LinkedList *list, Pokemon pokemon);
+void insertSorted(LinkedList *list, Pokemon pokemon, int outputPlag);
 void printList(LinkedList *list);
 void updateNode(LinkedList *list, unsigned short number, char *parameter, unsigned short value);
 void deleteNode(LinkedList *list, unsigned short number);
