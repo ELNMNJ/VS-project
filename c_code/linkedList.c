@@ -119,7 +119,7 @@ void printListByOperator(LinkedList *list, char *parameter, unsigned short value
         }
 
         switch (operator) {
-            case 0: // >
+            case OP_BT: // >
                 if (compareValue > value) {
                     printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                     current->data.number, current->data.name, current->data.hp, 
@@ -127,7 +127,7 @@ void printListByOperator(LinkedList *list, char *parameter, unsigned short value
                     current->data.spd, current->data.speed, current->data.name);
                 }
                 break;
-            case 1: // >=
+            case OP_EBT: // >=
                 if (compareValue >= value) {
                     printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                     current->data.number, current->data.name, current->data.hp, 
@@ -135,7 +135,7 @@ void printListByOperator(LinkedList *list, char *parameter, unsigned short value
                     current->data.spd, current->data.speed, current->data.name);
                 }
                 break;
-            case 2: // ==
+            case OP_EQ: // ==
                 if (compareValue == value) {
                     printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                     current->data.number, current->data.name, current->data.hp, 
@@ -143,7 +143,7 @@ void printListByOperator(LinkedList *list, char *parameter, unsigned short value
                     current->data.spd, current->data.speed, current->data.name);
                 }
                 break;
-            case 3: // <
+            case OP_LT: // <
                 if (compareValue < value) {
                     printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                     current->data.number, current->data.name, current->data.hp, 
@@ -151,7 +151,7 @@ void printListByOperator(LinkedList *list, char *parameter, unsigned short value
                     current->data.spd, current->data.speed, current->data.name);
                 }
                 break;
-            case 4: // <=
+            case OP_ELT: // <=
                 if (compareValue <= value) {
                     printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                     current->data.number, current->data.name, current->data.hp, 
@@ -167,7 +167,7 @@ void printListByOperator(LinkedList *list, char *parameter, unsigned short value
     }
 }
 
-// 두 개의 operator에 따라 노드 출력
+// 2つの演算子の種類によってリストを出力
 void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short value1, int operator1, char *parameter2, unsigned short value2, int operator2) {
     Node *current = list->head;
     if (current == NULL) {
@@ -220,10 +220,10 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
         }
 
         switch (operator1) {
-            case 0: // >
+            case OP_BT: // >
                 if (compareValue1 > value1) {
                     switch (operator2) {
-                        case 0: // >
+                        case OP_BT: // >
                             if (compareValue2 > value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                     current->data.number, current->data.name, current->data.hp, 
@@ -231,7 +231,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                     current->data.spd, current->data.speed, current->data.name);
                             }
                             break;
-                        case 1: // >=
+                        case OP_EBT: // >=
                             if (compareValue2 >= value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                     current->data.number, current->data.name, current->data.hp, 
@@ -239,7 +239,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                     current->data.spd, current->data.speed, current->data.name);
                             }
                             break;
-                        case 2: // ==
+                        case OP_EQ: // ==
                             if (compareValue2 == value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -247,7 +247,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 3: // <
+                        case OP_LT: // <
                             if (compareValue2 < value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -255,7 +255,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 4: // <=
+                        case OP_ELT: // <=
                             if (compareValue2 <= value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -269,10 +269,10 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                     }
                 }
                 break;
-            case 1: // >=
+            case OP_EBT: // >=
                 if (compareValue1 >= value1) {
                     switch (operator2) {
-                        case 0: // >
+                        case OP_BT: // >
                             if (compareValue2 > value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -280,7 +280,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 1: // >=
+                        case OP_EBT: // >=
                             if (compareValue2 >= value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -288,7 +288,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 2: // ==
+                        case OP_EQ: // ==
                             if (compareValue2 == value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -296,7 +296,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 3: // <
+                        case OP_LT: // <
                             if (compareValue2 < value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -304,7 +304,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 4: // <=
+                        case OP_ELT: // <=
                             if (compareValue2 <= value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -318,10 +318,10 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                     }
                 }
                 break;
-            case 2: // ==
+            case OP_EQ: // ==
                 if (compareValue1 == value1) {
                     switch (operator2) {
-                        case 0: // >
+                        case OP_BT: // >
                             if (compareValue2 > value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -329,7 +329,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 1: // >=
+                        case OP_EBT: // >=
                             if (compareValue2 >= value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -337,7 +337,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 2: // ==
+                        case OP_EQ: // ==
                             if (compareValue2 == value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -345,7 +345,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 3: // <
+                        case OP_LT: // <
                             if (compareValue2 < value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -353,7 +353,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 4: // <=
+                        case OP_ELT: // <=
                             if (compareValue2 <= value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -367,10 +367,10 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                     }
                 }
                 break;
-            case 3: // <
+            case OP_LT: // <
                 if (compareValue1 < value1) {
                     switch (operator2) {
-                        case 0: // >
+                        case OP_BT: // >
                             if (compareValue2 > value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -378,7 +378,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 1: // >=
+                        case OP_EBT: // >=
                             if (compareValue2 >= value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -386,7 +386,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 2: // ==
+                        case OP_EQ: // ==
                             if (compareValue2 == value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -394,7 +394,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 3: // <
+                        case OP_LT: // <
                             if (compareValue2 < value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -402,7 +402,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 4: // <=
+                        case OP_ELT: // <=
                             if (compareValue2 <= value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -416,10 +416,10 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                     }
                 }
                 break;
-            case 4: // <=
+            case OP_ELT: // <=
                 if (compareValue1 <= value1) {
                     switch (operator2) {
-                        case 0: // >
+                        case OP_BT: // >
                             if (compareValue2 > value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -427,7 +427,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 1: // >=
+                        case OP_EBT: // >=
                             if (compareValue2 >= value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -435,7 +435,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 2: // ==
+                        case OP_EQ: // ==
                             if (compareValue2 == value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -443,7 +443,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 3: // <
+                        case OP_LT: // <
                             if (compareValue2 < value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 
@@ -451,7 +451,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
                                        current->data.spd, current->data.speed);
                             }
                             break;
-                        case 4: // <=
+                        case OP_ELT: // <=
                             if (compareValue2 <= value2) {
                                 printf("number: %d\t Name: %-23s\t  hp: %-6d atk: %-6d def:%-6d spa:%-6d spd:%-6d speed:%-6d\n",
                                        current->data.number, current->data.name, current->data.hp, 

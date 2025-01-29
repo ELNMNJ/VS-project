@@ -1,6 +1,11 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
+// 演算子の種類
+typedef enum {
+    OP_BT, OP_EBT, OP_EQ, OP_LT, OP_ELT, OP_UNKNOWN
+} Operator;
+
 //構造体宣言部
 typedef struct Pokemon {
     unsigned short number;
