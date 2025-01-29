@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "linkedList.h"
+#include "parser.h"
 
 //リストの初期化
 void initList(LinkedList *list) {
