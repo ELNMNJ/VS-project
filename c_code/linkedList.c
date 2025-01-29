@@ -3,23 +3,23 @@
 #include <string.h>
 #include "linkedList.h"
 
-// 리스트 초기화
+//リストの初期化
 void initList(LinkedList *list) {
     list->head = NULL;
     list->tail = NULL;
 }
 
-// 정렬된 상태로 노드 추가
+//整列された状況でリストに挿入
 void insertSorted(LinkedList *list, Pokemon pokemon, int outputPlag) {
     Node *newNode = (Node*)malloc(sizeof(Node));
     newNode->data = pokemon;
     newNode->next = NULL;
 
     if (list->head == NULL || list->head->data.number > pokemon.number) {
-        // 새로운 노드가 첫 번째 노드보다 작을 때
+        //新しいノードがリストの先頭になる場合
         newNode->next = list->head;
         list->head = newNode;
-        if (newNode->next == NULL) list->tail = newNode; // 리스트에 노드가 하나뿐이었을 때
+        if (newNode->next == NULL) list->tail = newNode; //リストに1つのノードしかない場合
 
         if (outputPlag){
             printf("ポケモンがリストに追加されました。\n");
@@ -29,15 +29,15 @@ void insertSorted(LinkedList *list, Pokemon pokemon, int outputPlag) {
         while (current->next != NULL && current->next->data.number <= pokemon.number) {
             if (current->next->data.number == pokemon.number) {
                 printf("既に存在する番号です。\n");
-                free(newNode); // 메모리 누수를 방지하기 위해 할당된 메모리 해제
+                free(newNode); // メモリー解放
                 return;
             }
             current = current->next;
         }
-        // 중복이 없고, 삽입 위치를 찾았다면
+        //重複がない場合
         newNode->next = current->next;
         current->next = newNode;
-        if (newNode->next == NULL) list->tail = newNode; // 마지막 노드일 경우
+        if (newNode->next == NULL) list->tail = newNode; //最後のノードの場合
 
         if (outputPlag){
             printf("ポケモンがリストに追加されました。\n");
@@ -45,7 +45,7 @@ void insertSorted(LinkedList *list, Pokemon pokemon, int outputPlag) {
     }
 }
 
-// 리스트 순환하며 출력
+//全体のリストを出力
 void printList(LinkedList *list) {
     Node *current = list->head;
     if (current == NULL) {
@@ -61,6 +61,7 @@ void printList(LinkedList *list) {
     }
 }
 
+//特定の番号のポケモンの能力値を修正
 void updateNode(LinkedList *list, unsigned short number, char *parameter, unsigned short value) {
     Node *current = list->head;
     while (current != NULL) {
@@ -89,7 +90,7 @@ void updateNode(LinkedList *list, unsigned short number, char *parameter, unsign
     printf("番号に該当するポケモンが存在しません。\n");
 }
 
-// 특정 operator에 따라 노드 출력
+// 演算子の種類によってリストを出力
 void printListByOperator(LinkedList *list, char *parameter, unsigned short value, int operator) {
     Node *current = list->head;
     if (current == NULL) {
@@ -472,7 +473,7 @@ void printListByTwoOperator(LinkedList *list, char *parameter1, unsigned short v
     }
 }
 
-// 특정 number의 노드 삭제
+// 特定の番号のノードを削除
 void deleteNode(LinkedList *list, unsigned short number) {
     if (list->head == NULL) {
         printf("リストが空っぽです。\n");
@@ -484,18 +485,18 @@ void deleteNode(LinkedList *list, unsigned short number) {
 
     while (current != NULL) {
         if (current->data.number == number) {
-            if (prev == NULL) { // 첫 번째 노드 삭제
+            if (prev == NULL) { //最初のノードを削除する場合
                 list->head = current->next;
-                if (list->head == NULL) { // 리스트가 비어졌을 때
+                if (list->head == NULL) { // リストが空の場合
                     list->tail = NULL;
                 }
             } else {
                 prev->next = current->next;
-                if (current->next == NULL) { // 마지막 노드 삭제
+                if (current->next == NULL) { //　最後のノードを削除する場合
                     list->tail = prev;
                 }
             }
-            free(current);  // 메모리 해제
+            free(current);  // メモリー解放
             printf("番号に該当するポケモンが削除されました。\n");
             return;
         }
@@ -505,17 +506,17 @@ void deleteNode(LinkedList *list, unsigned short number) {
     printf("番号に該当するポケモンが存在しません。\n");
 }
 
+//メモリー解放
 void freeLinkedList(LinkedList *list) {
     Node *current = list->head;
     Node *next;
 
     while (current != NULL) {
         next = current->next;
-        free(current); // 현재 노드 해제
+        free(current);
         current = next;
     }
-    
-    // 리스트의 헤드와 테일을 NULL로 설정하여 리스트가 비어있음을 나타냅니다.
+
     list->head = NULL;
     list->tail = NULL;
 }

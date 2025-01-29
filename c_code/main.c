@@ -4,7 +4,6 @@
 #include "parser.h"
 #include "linkedList.h"
 
-// 테스트
 int main() {
     
     LinkedList list;
@@ -18,14 +17,13 @@ int main() {
 
     char line[256];
     while (fgets(line, sizeof(line), file) != NULL) {
-        // 배열 크기 재조정
         Pokemon *pokemon = malloc(sizeof(Pokemon));
-        // 각 라인의 데이터를 구조체에 매핑
+        // 各ラインのデータを読み込み、リストに追加
         if (sscanf(line, "%hu %21s %hu %hu %hu %hu %hu %hu", 
             &pokemon->number, pokemon->name, &pokemon->hp, &pokemon->atk, &pokemon->def, &pokemon->spa, &pokemon->spd, &pokemon->speed) == 8) {
             insertSorted(&list, *pokemon, 0);
         } else {
-            // 형식이 맞지 않는 경우 처리. 여기서는 무시함.
+            // 間違った入力
             printf("wrong input: %s\n", line);
         }
     }
@@ -37,10 +35,10 @@ int main() {
     while (1) {
         printf("SQL文を入力してください。 [終了ーexit | セーブーsave] : ");
         fgets(sql, sizeof(sql), stdin);
-        sql[strlen(sql) - 1] = '\0'; // 개행문자 제거
+        sql[strlen(sql) - 1] = '\0'; // 改行文字を削除
 
         if(strcmp(sql, "save") == 0){
-            // 파일을 쓰기 모드로 다시 열기
+            // ファイルを開く
             file = fopen("pokemonList.txt", "w");
             if (file == NULL) {
                 perror("file open failed");
@@ -48,7 +46,7 @@ int main() {
                 return 1;
             }
 
-            // 리스트의 모든 노드를 파일에 쓰기
+            //リストをファイルに書き込む
             Node *current = list.head;
             while (current != NULL) {
                 fprintf(file, "%hu %s %hu %hu %hu %hu %hu %hu\n", 

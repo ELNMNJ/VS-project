@@ -1,4 +1,4 @@
-sql
+//sql文の文法
 
 select
 select para1 operator integer (and para2 operator integer)
@@ -19,6 +19,8 @@ update number para val
 delete
 delete number
 
-//execute file encoding JP
+
+
+//c_code フォルダをターミナルで実行したあと、以下の命令を入力
 $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = [System.Text.Encoding]::UTF8
 .\main.exe

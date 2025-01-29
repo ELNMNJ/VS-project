@@ -1,6 +1,7 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
+//構造体宣言部
 typedef struct Pokemon {
     unsigned short number;
     char name[22];
@@ -22,7 +23,7 @@ typedef struct LinkedList {
     Node *tail;
 } LinkedList;
 
-void printPokemon(Node* current);
+//関数宣言部
 void initList(LinkedList *list);
 void insertSorted(LinkedList *list, Pokemon pokemon, int outputPlag);
 void printList(LinkedList *list);
